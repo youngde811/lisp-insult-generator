@@ -8,4 +8,4 @@ here as progress continues.
 - SBCL
 
 ## Author ##
-- [David E. Young](mailto:sporty-iron883@protonmail.com
+- [David E. Young](mailto:sporty-iron883@protonmail.com)
