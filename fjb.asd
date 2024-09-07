@@ -7,3 +7,5 @@
   :components
   ((:file "src/package")
    (:file "src/main" :depends-on ("src/package"))))
+
+;;; (ql:quickload "FJB")
