@@ -11,11 +11,13 @@
   (with-open-file (strm *phrases-path*)
     (loop for line = (read-line strm nil nil)
           while line
-          collect `(,line))))
+          collect (uiop:split-string line))))
 
 (defun generate-insults (&key (phrases-file default-phrases-file))
   (let ((*phrases-path* phrases-file))
     (collect-phrases)))
 
 (defun insult-me ()
-  t)
+  (let ((phrase (first (generate-insults))))
+    (format t "Thou ~d ~d ~d!" (first phrase) (second phrase) (third phrase))
+    t))
