@@ -1,27 +1,21 @@
 
 ;;; This file is the entry point to my Lisp implementation of the phrase parser.
 
-(in-package "FJB")
+(in-package "FUCK-JOE-BIDEN")
 
-(defconstant default-phrases-file "./data/phrases.txt")
+(defmacro with-custom-phrases (path &body body)
+  `(let* ((*default-phrases-file* ,path)
+          (*insult-keywords* (collect-phrases)))
+     (progn
+       ,@body)))
 
-(defvar *phrases-path* nil)
-
-(defun collect-phrases ()
-  (with-open-file (strm *phrases-path*)
-    (loop for line = (read-line strm nil nil)
-          while line
-          collect (uiop:split-string line))))
-
-(defun generate-insults (&key (phrases-file default-phrases-file) (count 500))
-  (let* ((*phrases-path* phrases-file)
-         (phrases (collect-phrases))
-         (nphrases (length phrases)))
+(defun generate-insults (&key (count 500))
+  (let ((nphrases (length *insult-keywords*)))
     (loop for i from 0 to (1- count)
           collect (format nil "Thou ~d ~d ~d!"
-                          (first (nth (random nphrases) phrases))
-                          (second (nth (random nphrases) phrases))
-                          (third (nth (random nphrases) phrases))))))
+                          (first (nth (random nphrases) *insult-keywords*))
+                          (second (nth (random nphrases) *insult-keywords*))
+                          (third (nth (random nphrases) *insult-keywords*))))))
 
 (defun insult-me (&key (count 1))
   (let* ((insults (generate-insults))

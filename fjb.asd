@@ -6,6 +6,7 @@
 (defsystem :fjb
   :components
   ((:file "src/package")
-   (:file "src/main" :depends-on ("src/package"))))
+   (:file "src/init")
+   (:file "src/main" :depends-on ("src/init"))))
 
 ;;; (ql:quickload "FJB")
