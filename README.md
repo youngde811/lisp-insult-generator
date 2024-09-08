@@ -31,7 +31,9 @@ CL-USER>
 ## Creating a Custom SBCL Core ##
 
 For this project, it's much easier to load if you have the proper SBCL core file configured. The easiest way is to
-create a load file that contains the following, adjusting pathnames according to your preferences:
+create a load file that contains the following, adjusting pathnames according to your preferences. Past the following
+code into a file - call it _frodo.lisp_, and run: `sbcl --load frodo.lisp`. You should now have your custom core ready
+to go:
 
 ```
 (in-package :cl-user)
