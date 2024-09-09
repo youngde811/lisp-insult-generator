@@ -31,17 +31,17 @@
        ,@body)))
 
 (defun generate-insults (&key (count 500))
-  (let ((nphrases (length *insult-keywords*)))
+  (let ((nkeywords (length *insult-keywords*)))
     (loop for i from 0 to (1- count)
           collect (format nil "Thou ~d ~d ~d!"
-                          (first (nth (random nphrases) *insult-keywords*))
-                          (second (nth (random nphrases) *insult-keywords*))
-                          (third (nth (random nphrases) *insult-keywords*))))))
+                          (first (nth (random nkeywords) *insult-keywords*))
+                          (second (nth (random nkeywords) *insult-keywords*))
+                          (third (nth (random nkeywords) *insult-keywords*))))))
 
-(defun insult-me (&key (count 1))
+(defun insult-me (&key (how-many 1))
   (let* ((insults (generate-insults))
          (len (length insults)))
-    (loop for i from 0 to (1- count)
+    (loop for i from 0 to (1- how-many)
           do
              (format t "~d~%" (nth (random len) insults)))
     (values)))
