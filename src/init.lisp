@@ -36,4 +36,4 @@
   (let ((*default-keywords-file* path))
     (setf *insult-keywords* (collect-keywords))))
 
-(defparameter *insult-keywords* (collect-keywords))
+(defvar *insult-keywords* (collect-keywords))
