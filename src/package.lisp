@@ -5,4 +5,4 @@
   (:documentation "The FUCK-JOE-BIDEN package, which generates Shakespearean insults.")
   (:nicknames "FJB")
   (:use "COMMON-LISP")
-  (:export "GENERATE-INSULTS" "INSULT-ME"))
+  (:export "GENERATE-INSULTS" "GRUMBLE" "INSULT-ME" "USE-KEYWORDS-FILE" "WITH-CUSTOM-KEYWORDS"))

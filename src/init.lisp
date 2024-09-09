@@ -4,13 +4,16 @@
 
 (in-package "FUCK-JOE-BIDEN")
 
-(defvar *default-phrases-file* "./data/phrases.txt")
+(defvar *default-keywords-file* "data/keywords.txt")
 
-(defun collect-phrases ()
-  (with-open-file (strm *default-phrases-file*)
+(defun collect-keywords ()
+  (with-open-file (strm *default-keywords-file*)
     (loop for line = (read-line strm nil nil)
           while line
           collect (uiop:split-string line))))
 
-(defparameter *insult-keywords* (collect-phrases))
+(defun use-keywords-file (path)
+  (let ((*default-keywords-file* path))
+    (setf *insult-keywords* (collect-keywords))))
 
+(defparameter *insult-keywords* (collect-keywords))

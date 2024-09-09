@@ -3,9 +3,9 @@
 
 (in-package "FUCK-JOE-BIDEN")
 
-(defmacro with-custom-phrases (path &body body)
-  `(let* ((*default-phrases-file* ,path)
-          (*insult-keywords* (collect-phrases)))
+(defmacro with-custom-keywords ((path) &body body)
+  `(let* ((*default-keywords-file* ,path)
+          (*insult-keywords* (collect-keywords)))
      (progn
        ,@body)))
 
@@ -23,4 +23,7 @@
     (loop for i from 0 to (1- count)
           do
              (format t "~d~%" (nth (random len) insults)))
-    t))
+    (values)))
+
+(defun grumble ()
+  (insult-me))
